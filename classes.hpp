@@ -83,7 +83,7 @@ class Message{
             }
         }
         for (int i = 0; i < (valores.size() - tam); i++){
-            checksum.push_back(new Fletcher16 (valores[i], checksum[checksum.size() - 2]->get_C0(), checksum[checksum.size() - 2]->get_C1()));
+            checksum.push_back(new Fletcher16 (valores[i], checksum[checksum.size() - 1]->get_C0(), checksum[checksum.size() - 1]->get_C1()));
         }
         tamanho = tamanho + m.size();
         msg = msg + m;
@@ -105,7 +105,7 @@ class Message{
         if((b >= 0) &&(b <= 255)){
             valores.push_back(to_string(b));
             msg = msg + to_string(b) + ' ';
-            checksum.push_back(new Fletcher16 (valores[valores.size() - 1], checksum[checksum.size() - 2]->get_C0(), checksum[checksum.size() - 2]->get_C1()));
+            checksum.push_back(new Fletcher16 (valores[valores.size() - 1], checksum[checksum.size() - 1]->get_C0(), checksum[checksum.size() - 1]->get_C1()));
         }else{
             cout << "Erro ao adicionar byte! " << endl;
         }
